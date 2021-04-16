@@ -76,6 +76,19 @@ spec:
   selector:
     app: website
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: uploader
+spec:
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  selector:
+    app: uploader
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -93,5 +106,12 @@ spec:
         backend:
           service:
             name: website
+            port:
+              number: 80
+      - path: /uploader
+        pathType: Prefix
+        backend:
+          service:
+            name: uploader
             port:
               number: 80
