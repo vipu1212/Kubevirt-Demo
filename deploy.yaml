@@ -7,6 +7,7 @@ spec:
   template:
     metadata:
       labels: 
+        name: ubuntu
         kubevirt.io/size: medium
         kubevirt.io/domain: ubuntu
     spec:
@@ -79,7 +80,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: uploader
+  name: ubuntu
 spec:
   type: NodePort
   ports:
@@ -87,4 +88,4 @@ spec:
       port: 80
       targetPort: 80
   selector:
-    app: ubuntu
+    name: ubuntu

@@ -17,10 +17,10 @@ spec:
             name: website
             port:
               number: 80
-      - path: /uploader
+      - path: /ubuntu
         pathType: Prefix
         backend:
           service:
-            name: uploader
+            name: ubuntu
             port:
               number: 80
