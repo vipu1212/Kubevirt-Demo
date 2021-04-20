@@ -26,7 +26,7 @@ spec:
             bridge: {}
         resources:
           requests:
-            memory: 1024M
+            memory: 2048M
       networks:
       - name: default
         pod: {}
@@ -88,30 +88,3 @@ spec:
       targetPort: 80
   selector:
     app: ubuntu
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: ig-app
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/rewrite-target: /
-  namespace: default
-spec:
-  rules:
-  - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: website
-            port:
-              number: 80
-      - path: /uploader
-        pathType: Prefix
-        backend:
-          service:
-            name: uploader
-            port:
-              number: 80
