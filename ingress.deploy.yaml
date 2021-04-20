@@ -8,7 +8,6 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: kubevirt.divyan.sh
   - http:
       paths:
       - path: /
