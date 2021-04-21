@@ -7,6 +7,7 @@ spec:
   template:
     metadata:
       labels: 
+        name: ubuntu
         kubevirt.io/size: medium
         kubevirt.io/domain: ubuntu
     spec:
@@ -26,7 +27,7 @@ spec:
             bridge: {}
         resources:
           requests:
-            memory: 1024M
+            memory: 2048M
       networks:
       - name: default
         pod: {}
@@ -81,17 +82,21 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: uploader
+  name: ubuntu
 spec:
   type: NodePort
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8080
+      targetPort: 80
   selector:
+<<<<<<< HEAD
     app: uploader
   externalIPs:
     - 35.208.66.244
+=======
+    name: ubuntu
+>>>>>>> 5b7c72f5ebd7192a38b709273d2a651e8e1a48a2
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -112,10 +117,10 @@ spec:
             name: website
             port:
               number: 80
-      - path: /uploader
+      - path: /ubuntu
         pathType: Prefix
         backend:
           service:
-            name: uploader
+            name: ubuntu
             port:
               number: 80
