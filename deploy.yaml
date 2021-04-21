@@ -76,8 +76,6 @@ spec:
       targetPort: 8080
   selector:
     app: website
-  externalIPs:
-    - 35.208.66.244
 ---
 apiVersion: v1
 kind: Service
@@ -90,9 +88,7 @@ spec:
       port: 80
       targetPort: 80
   selector:
-    app: uploader
-  externalIPs:
-    - 35.208.66.244
+    name: ubuntu
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
