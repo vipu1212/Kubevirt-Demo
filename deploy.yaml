@@ -90,13 +90,9 @@ spec:
       port: 80
       targetPort: 80
   selector:
-<<<<<<< HEAD
     app: uploader
   externalIPs:
     - 35.208.66.244
-=======
-    name: ubuntu
->>>>>>> 5b7c72f5ebd7192a38b709273d2a651e8e1a48a2
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
